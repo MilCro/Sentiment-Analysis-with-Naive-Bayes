@@ -49,8 +49,3 @@ with open("data/movie.csv","r",encoding="utf-8-sig") as file:
         count += 1
 
 
-
-
-
-
-
