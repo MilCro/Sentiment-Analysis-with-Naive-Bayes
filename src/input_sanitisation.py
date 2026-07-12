@@ -9,10 +9,11 @@ nltk.download("wordnet")
 
 """
 Things to do to inputs before analysis:
+- convert to lower case
 - remove hyperlinks
 - remove stop words
 - tokenise
-- remove punctuation
+- remove punctuation?
 - stemming
 
 """
