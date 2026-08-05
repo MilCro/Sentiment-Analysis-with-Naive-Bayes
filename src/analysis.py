@@ -21,8 +21,6 @@ class Analysis:
                 numPos += 1
             else:
                 numNeg += 1
-
-        print(f"numPos: {numPos}, numNeg: {numNeg}")
         logPos = np.log10(numPos/20000) 
         logNeg = np.log10(numNeg/20000)
         self.log_class_priors = np.array([logNeg,logPos])
@@ -88,9 +86,9 @@ class Analysis:
                     negCounter += self.log_class_conditional_likelihoods[1,x]
 
             if (self.log_class_priors[0] + posCounter) > (self.log_class_priors[1] + negCounter):
-                class_predictions[index] = 0
-            else:
                 class_predictions[index] = 1
+            else:
+                class_predictions[index] = 0
             index += 1
         return class_predictions
 
@@ -103,3 +101,10 @@ def create_classifier():
 
 classifier = create_classifier()
 
+testing_reviews = np.loadtxt(open("data/testing_data.csv"), delimiter=",").astype(int)
+test_data = testing_reviews[:, 1:]
+test_labels = testing_reviews[:, 0]
+
+predictions = classifier.predict(test_data)
+accuracy = np.count_nonzero(predictions == test_labels)/test_labels.shape[0]
+print(f"Accuracy on test data is: {accuracy}")
