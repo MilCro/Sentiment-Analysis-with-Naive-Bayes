@@ -36,11 +36,11 @@ with open("data/movie.csv","r",encoding="utf-8-sig") as file:
             col += 1
 
         #eventually put 20k in each file rather than 50 
-        if count <= 50:
+        if count <= 19999:
             with open("data/training_data.csv","a",newline="") as training_data:
                 writer = csv.writer(training_data)
                 writer.writerow(row)
-        elif count <= 100:
+        elif count <= 40000:
             with open("data/testing_data.csv","a",newline="") as testing_data:
                 writer = csv.writer(testing_data)
                 writer.writerow(row)
