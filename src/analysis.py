@@ -2,9 +2,7 @@
 import numpy as np
 
 training_data = np.loadtxt(open("data/training_data.csv"), delimiter=",").astype(int)
-print("Shape of the training data set:", training_data.shape)
-#print(training_data)
-
+#print("Shape of the training data set:", training_data.shape)
 
 class Analysis:
     def __init__(self, k, training_data):
@@ -92,6 +90,8 @@ class Analysis:
             index += 1
         return class_predictions
 
+    def predict_one_data(self, data):
+        pass
 
 def create_classifier():
     training_data = np.loadtxt(open("data/training_data.csv"), delimiter=",").astype(int)
@@ -101,10 +101,13 @@ def create_classifier():
 
 classifier = create_classifier()
 
+""" #84.4% accurate on training data
 testing_reviews = np.loadtxt(open("data/testing_data.csv"), delimiter=",").astype(int)
 test_data = testing_reviews[:, 1:]
 test_labels = testing_reviews[:, 0]
 
 predictions = classifier.predict(test_data)
-accuracy = np.count_nonzero(predictions == test_labels)/test_labels.shape[0]
+accuracy = np.count_nonzero(predictions == test_labels)/test_labels.shape[0] 
 print(f"Accuracy on test data is: {accuracy}")
+"""
+
