@@ -23,25 +23,6 @@ Things to do to inputs before analysis:
 
 """
 
-class Sanitisation:
-    def __init__(self, input):
-        self.input = input.lower()
-
-        self.tokenise()
-        self.remove_stop_words()
-
-
-
-    def get_input(self):
-        return self.input
-
-    def tokenise(self):
-        r = re.compile(r'[\s{}]+'.format(re.escape(punctuation)))
-        self.input = r.split(self.input)
-
-    def remove_stop_words(self):
-        self.input = [word for word in self.input if word not in stop_words_arr]
-
 stop_words_arr = stopwords.words("english")
 
 positive_words = opinion_lexicon.positive()
@@ -70,10 +51,7 @@ class Preparation:
 
 input = "A polar bear's head is oblong and relatively small compared to body size. The muzzle is elongated with a 'Roman-nosed' (slightly arched) snout. Polar bears have 42 teeth, which they use for catching food and for aggressive behavior. Polar bears use their incisors to shear off pieces of blubber and flesh."
 
-sanitiser = Sanitisation(input)
-print(sanitiser.get_input())
-clean_input = sanitiser.get_input()
-preparing = Preparation(clean_input)
+preparing = Preparation(input)
 print(preparing.get_output())
 ready_to_use_input = preparing.get_output()
 
