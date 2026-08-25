@@ -48,10 +48,10 @@ class Preparation:
 
 
 
-
+"""
 input = "A polar bear's head is oblong and relatively small compared to body size. The muzzle is elongated with a 'Roman-nosed' (slightly arched) snout. Polar bears have 42 teeth, which they use for catching food and for aggressive behavior. Polar bears use their incisors to shear off pieces of blubber and flesh."
 
 preparing = Preparation(input)
 print(preparing.get_output())
 ready_to_use_input = preparing.get_output()
-
+"""

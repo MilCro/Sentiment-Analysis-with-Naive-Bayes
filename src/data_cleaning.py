@@ -14,6 +14,8 @@ num_pos = len(positive_words) #2006
 num_neg = len(negative_words) #4783 
 
 vocabulary = positive_words + negative_words #6789
+for word in vocabulary:
+    word = word.lower()
 
 #for emptying the files
 with open("data/training_data.csv","w+") as a:
@@ -26,6 +28,7 @@ with open("data/movie.csv","r",encoding="utf-8-sig") as file:
     reviews = csv.reader(file)
     count = 0
     for review in reviews:
+        review[0] = review[0].lower()
 
         row = np.zeros(6790) #the first element will indicate a pos {1} or neg {0} review
         row[0] = review[1]

@@ -1,5 +1,6 @@
 
 import numpy as np
+from input_sanitisation import *
 
 training_data = np.loadtxt(open("data/training_data.csv"), delimiter=",").astype(int)
 #print("Shape of the training data set:", training_data.shape)
@@ -91,7 +92,19 @@ class Analysis:
         return class_predictions
 
     def predict_one_data(self, data):
-        pass
+        posCounter = 0
+        negCounter = 0
+        for x in range(6789):
+            if data[x] == 1:
+                posCounter += self.log_class_conditional_likelihoods[0,x]
+                negCounter += self.log_class_conditional_likelihoods[1,x]
+
+        if (self.log_class_priors[0] + posCounter) > (self.log_class_priors[1] + negCounter):
+            class_prediction = 1
+        else:
+            class_prediction = 0
+        
+        return [class_prediction,posCounter,negCounter]
 
 def create_classifier():
     training_data = np.loadtxt(open("data/training_data.csv"), delimiter=",").astype(int)
@@ -100,6 +113,18 @@ def create_classifier():
     return classifier
 
 classifier = create_classifier()
+
+user_input = input("Enter text: ").lower()
+preparing = Preparation(user_input)
+clean_input = preparing.get_output()
+print(np.count_nonzero(clean_input))
+
+output = classifier.predict_one_data(clean_input)
+
+print(output)
+
+
+
 
 """ #84.4% accurate on training data
 testing_reviews = np.loadtxt(open("data/testing_data.csv"), delimiter=",").astype(int)
