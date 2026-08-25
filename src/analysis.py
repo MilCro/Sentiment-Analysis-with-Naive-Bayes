@@ -116,12 +116,20 @@ classifier = create_classifier()
 
 user_input = input("Enter text: ").lower()
 preparing = Preparation(user_input)
+preparing.prepare()
 clean_input = preparing.get_output()
-print(np.count_nonzero(clean_input))
 
 output = classifier.predict_one_data(clean_input)
 
 print(output)
+
+if output[1] == output[2]:
+    print("Neutral")
+elif output[0] == 1:
+    print("Positive")
+elif output[0] == 0:
+    print("Negative")
+
 
 
 

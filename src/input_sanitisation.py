@@ -31,7 +31,7 @@ vocabulary = positive_words + negative_words #6789
 
 class Preparation:
     def __init__(self,input):
-        self.input = input
+        self.input = re.findall(r'[^\W_]+', input)
         self.output = np.zeros(6789)
 
     def get_output(self):
