@@ -3,7 +3,7 @@
 
 import csv
 import nltk
-#nltk.download('opinion_lexicon')
+nltk.download('opinion_lexicon')
 from nltk.corpus import opinion_lexicon
 import numpy as np
 

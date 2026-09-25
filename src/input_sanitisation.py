@@ -4,12 +4,12 @@ import numpy as np
 import re
 from string import punctuation
 import nltk
-#nltk.download("averaged_perceptron_tagger_eng") #list of words tagged with types
+nltk.download("averaged_perceptron_tagger_eng") #list of words tagged with types
 from nltk.corpus import stopwords
-#nltk.download("stopwords") #list of unimportant words e.g. the
+nltk.download("stopwords") #list of unimportant words e.g. the
 from nltk.stem import PorterStemmer #reduces words to their root form
-#nltk.download("punkt")
-#nltk.download("wordnet")
+nltk.download("punkt")
+nltk.download("wordnet")
 from nltk.corpus import opinion_lexicon
 
 """

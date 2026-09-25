@@ -5,6 +5,8 @@ from input_sanitisation import *
 training_data = np.loadtxt(open("data/training_data.csv"), delimiter=",").astype(int)
 #print("Shape of the training data set:", training_data.shape)
 
+log_class_conditional_likelihoods_calculated = []
+
 class Analysis:
     def __init__(self, k, training_data):
         self.k = k
@@ -69,11 +71,13 @@ class Analysis:
         theta[1] = negTheta
         self.log_class_conditional_likelihoods = theta
 
+        print(f"theta: {theta}")
+
     def train(self,data):
         self.estimate_log_class_priors(data)
         self.estimate_log_class_conditional_likelihoods(data)
     
-    def predict(self, data):
+    def predict(self, data): #for testing dataset to determine accuracy
         class_predictions = np.zeros(shape=(len(data)))
         index = 0
         for d in data:
