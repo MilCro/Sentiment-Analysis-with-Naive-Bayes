@@ -1,5 +1,6 @@
 
 #import csv
+import json
 import numpy as np
 import re
 from string import punctuation
@@ -28,6 +29,15 @@ stop_words_arr = stopwords.words("english")
 positive_words = opinion_lexicon.positive()
 negative_words = opinion_lexicon.negative()
 vocabulary = positive_words + negative_words #6789
+
+""" saving vocab for use elsewhere
+vocab_str = []
+for w in vocabulary:
+    vocab_str += [w]
+with open("vocabulary.json", "w") as file:
+    json.dump(vocab_str, file);
+print(len(vocab_str))
+"""
 
 class Preparation:
     def __init__(self,input):

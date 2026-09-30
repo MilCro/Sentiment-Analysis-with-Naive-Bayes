@@ -1,6 +1,7 @@
 
 import numpy as np
 from input_sanitisation import *
+import json
 
 training_data = np.loadtxt(open("data/training_data.csv"), delimiter=",").astype(int)
 #print("Shape of the training data set:", training_data.shape)
@@ -71,7 +72,17 @@ class Analysis:
         theta[1] = negTheta
         self.log_class_conditional_likelihoods = theta
 
+        """ to save theta for use elsewhere
+        theta_json = json.dumps(theta.tolist())
+        with open("theta.json", "w") as file:
+            json.dump(theta_json, file);
+        """
+        """
+        print(f"theta format: {type(theta)}")
+        print(len(theta[0]))
+        print(len(theta[1]))
         print(f"theta: {theta}")
+        """
 
     def train(self,data):
         self.estimate_log_class_priors(data)
